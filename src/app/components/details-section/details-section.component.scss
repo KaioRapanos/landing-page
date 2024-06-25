@@ -1,0 +1,72 @@
+@import "../../../color-variables.scss";
+
+.details-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.details {
+  padding: 48px;
+
+  img{
+    margin-bottom: 25px;
+  }
+
+  h3,p {
+    margin-left: 10px;
+    width: 510px;
+    word-wrap: break-word;
+  }
+
+  h3{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: $h3-text;
+  }
+
+  p{
+    font-size: 16px;
+    font-weight: 400;
+    color: $secondary-text
+  }
+
+}
+
+.act-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1{
+    gap: 40px;
+    width: 1000px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 50px;
+  }
+
+  app-btn-primary {
+    margin-bottom: 33px;
+  }
+}
+
+@media (min-width: 1080px){
+  .details-section {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1400px){
+  img{
+    margin-bottom: 25px;
+    width: 609px;
+    height: 580px;
+  }
+}

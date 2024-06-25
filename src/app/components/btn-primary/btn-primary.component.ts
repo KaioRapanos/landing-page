@@ -1,0 +1,45 @@
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+
+type BtnVariants = "primary" | "secondary"
+
+@Component({
+  selector: 'app-btn-primary',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
+  templateUrl: './btn-primary.component.html',
+  styleUrl: './btn-primary.component.scss'
+})
+export class BtnPrimaryComponent {
+  @Input ("btn-text") btnText: string = "";
+  @Input() disabled: boolean = false;
+  @Input() loading: boolean = false;
+  @Input() variant: BtnVariants = "primary";
+  @Input("action") action: string = "";
+
+  @Output ("submit") onSubmit = new EventEmitter();
+  @Output ("scroll") onScroll = new EventEmitter();
+
+  submit(){
+    this.onSubmit.emit()
+  }
+
+  scrollToSection() {
+    const element = document.getElementById(this.action);
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth', block:'start'})
+      this.onScroll.emit();
+    }
+  }
+
+  @HostListener('click')
+  onClick() {
+    if (this.action) {
+      this.scrollToSection();
+    } else {
+      this.submit();
+    }
+  }
+}
